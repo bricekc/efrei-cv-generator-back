@@ -41,6 +41,10 @@ const CVSchema = new mongoose.Schema(
     description: {
       type: String
     },
+    isPublic: {
+      type: Boolean,
+      default: false
+    },
     user: {
       type: mongoose.Schema.ObjectId,
       ref: 'User'

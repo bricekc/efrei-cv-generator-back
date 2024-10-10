@@ -19,6 +19,10 @@ const verifyCv = (cv) => {
         minLength: 3,
         errorMessage: 'Provided Description is invalid'
       },
+      isPublic: {
+        type: 'boolean',
+        errorMessage: 'Provided isPublic is invalid'
+      },
       educationalExperiences: {
         type: 'array',
         items: {

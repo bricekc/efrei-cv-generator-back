@@ -1,4 +1,4 @@
-import BookModel from '../models/Book.js';
+import BookModel from '../models/Cv.js';
 import mongoose from 'mongoose';
 
 export default {

@@ -4,7 +4,6 @@ const verifyCv = (cv) => {
   if (!cv) {
     throw new Error('Cannot create new CV');
   }
-  console.log("coucou")
   let validator = new Validator();
   let cvSchema = {
     type: 'object',

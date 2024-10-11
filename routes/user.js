@@ -6,6 +6,6 @@ const app = express();
 
 app.get('/me', jwt.verifyUser, userController.getUserInfos);
 
-app.get('/books', jwt.verifyUser, userController.getUserBooks);
+app.get('/cvs', jwt.verifyUser, userController.getUserCvs);
 
 export default app;

@@ -1,4 +1,4 @@
-import BookModel from '../models/Book.js';
+import CvModel from '../models/Cv.js';
 import mongoose from 'mongoose';
 
 export default {
@@ -12,11 +12,11 @@ export default {
     });
   },
 
-  getUserBooks: async (req, res) => {
-    const books = await BookModel.find({
-      author: new mongoose.Types.ObjectId(req.user.id)
+  getUserCvs: async (req, res) => {
+    const cvs = await CvModel.find({
+      user: new mongoose.Types.ObjectId(req.user.id)
     });
 
-    res.send(books);
+    res.send(cvs);
   }
 };

@@ -14,6 +14,18 @@ const app = express();
  * @swagger
  * components:
  *   schemas:
+ *     Review:
+ *       type: object
+ *       required:
+ *         - rating
+ *         - comment
+ *       properties:
+ *         rating:
+ *           type: number
+ *           description: The rating of the Review
+ *         comment:
+ *           type: string
+ *           description: The comment of the Review
  *     CV:
  *       type: object
  *       required:
@@ -116,7 +128,7 @@ app.get('/', cvController.findAll);
  *       404:
  *         description: CV not found
  */
-app.get('/:id', jwt.verifyUser, cvController.findOne);
+app.get('/:id', cvController.findOne);
 
 /**
  * @swagger
@@ -198,4 +210,27 @@ app.put('/:id', jwt.verifyUser, cvController.update);
  */
 app.delete('/:id', jwt.verifyUser, cvController.delete);
 
+/**
+ * @swagger
+ * /api/cv/{id}/reviews:
+ *   post:
+ *     summary: Create a new review to cv
+ *     tags: [CVs]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Review'
+ *     responses:
+ *       201:
+ *         description: The created Review
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Review'
+ *       401:
+ *         description: Unauthorized
+ */
+app.post('/:id/reviews', jwt.verifyUser, cvController.addReview);
 export default app;

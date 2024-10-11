@@ -54,7 +54,13 @@ const CVSchema = new mongoose.Schema(
     },
     professionalExperiences: {
       type: [ProfessionalExperienceSchema]
-    }
+    },
+    reviews: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Review'
+      }
+    ]
   },
   { timestamps: true }
 );

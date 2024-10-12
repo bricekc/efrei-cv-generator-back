@@ -126,7 +126,8 @@ export default {
       await review.save(review)
       cv.reviews.push(review._id);
       await cv.save();
-      res.status(201).send(cv)
+      review.user = user;
+      res.status(201).send(review);
     } catch (error) {
       res.status(500).send({
         message: error.message

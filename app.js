@@ -8,7 +8,7 @@ import swaggerUI from 'swagger-ui-express'
 
 const app = express();
 
-app.use(cors())
+app.use(cors( process.env.CORS_URL || 'https://efrei-cv-generator-front.onrender.com'))
 
 app.use(express.json());
 

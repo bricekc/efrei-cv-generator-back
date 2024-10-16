@@ -74,7 +74,7 @@ export default {
         });
       }
     } catch (error) {
-      res.status(500).send({
+      res.status(400).send({
         message: error.message
       });
     }

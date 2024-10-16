@@ -3,25 +3,31 @@ import UserModel from '../models/User.js';
 
 export default {
   verifyUser: async (req, res, next) => {
-    let token = req.headers['authorization'];
+    try {
+      let token = req.headers['authorization'];
 
-    if (!token) {
+      if (!token) {
+        res.status(401).send({
+          message: 'Unauthorized user'
+        });
+      }
+
+      token = token.replace('Bearer ', '');
+      const { userId } = jwt.verify(token, process.env.JWT_SECRET || 'secret');
+      const user = await UserModel.findById(userId);
+      req.user = user;
+
+      if (!user) {
+        res.status(401).send({
+          message: 'Unauthorized user'
+        });
+      }
+
+      next();
+    } catch (error) {
       res.status(401).send({
-        message: 'Unauthorized user'
+        message: error
       });
     }
-
-    token = token.replace('Bearer ', '');
-    const { userId } = jwt.verify(token, process.env.JWT_SECRET || 'secret');
-    const user = await UserModel.findById(userId);
-    req.user = user;
-
-    if (!user) {
-      res.status(401).send({
-        message: 'Unauthorized user'
-      });
-    }
-
-    next();
   }
 };

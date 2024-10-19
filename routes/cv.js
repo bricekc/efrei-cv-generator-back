@@ -130,6 +130,8 @@ app.get('/', cvController.findAll);
  */
 app.get('/:id', cvController.findOne);
 
+app.get('/user/:id', cvController.findOneByUser);
+
 /**
  * @swagger
  * /api/cv:

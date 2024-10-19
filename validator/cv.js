@@ -33,19 +33,22 @@ const verifyCv = (cv) => {
               errorMessage: 'Provided Educational Experience Name is invalid'
             },
             description: {
-              type: 'string',
+              type: ['string', 'null'],
               minLength: 3,
-              errorMessage: 'Provided Educational Experience Description is invalid'
+              errorMessage: 'Provided Educational Experience Description is invalid',
+              nullable: true
+              
             },
             startDate: {
               type: 'string',
-              format: 'date-time',
+              format: 'date',
               errorMessage: 'Provided Educational Experience Start Date is invalid'
             },
             endDate: {
-              type: 'string',
-              format: 'date-time',
-              errorMessage: 'Provided Educational Experience End Date is invalid'
+              type: ['string', 'null'],
+              format: 'date',
+              errorMessage: 'Provided Educational Experience End Date is invalid',
+              nullable: true
             }
           },
           required: ['name', 'startDate']
@@ -62,19 +65,21 @@ const verifyCv = (cv) => {
               errorMessage: 'Provided Professional Experience Name is invalid'
             },
             description: {
-              type: 'string',
+              type: ['string', 'null'],
               minLength: 3,
-              errorMessage: 'Provided Professional Experience Description is invalid'
+              errorMessage: 'Provided Professional Experience Description is invalid',
+              nullable: true
             },
             startDate: {
               type: 'string',
-              format: 'date-time',
+              format: 'date',
               errorMessage: 'Provided Professional Experience Start Date is invalid'
             },
             endDate: {
-              type: 'string',
-              format: 'date-time',
-              errorMessage: 'Provided Professional Experience End Date is invalid'
+              type: ['string', 'null'],
+              format: 'date',
+              errorMessage: 'Provided Professional Experience End Date is invalid',
+              nullable: true
             }
           },
           required: ['name', 'startDate']
